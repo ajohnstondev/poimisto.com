@@ -1,0 +1,16 @@
+[build]
+  base = ""
+  command = "gatsby build"
+  output = "public/"
+
+[context.production]
+  environment = { GATSBY_STAGE = "prod" }
+
+[context.dev] # 'dev' is a branch name
+  environment = { GATSBY_STAGE = "dev" }
+
+[context.branch-deploy]
+  environment = { GATSBY_STAGE = "branch" }
+
+[context.deploy-preview]
+  environment = { GATSBY_STAGE = "preview" }
