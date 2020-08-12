@@ -3,6 +3,7 @@ const theme = {
     primary: '#b01',
     body: '#fafafa',
     text: '#333',
+    headings: '#000',
   },
 }
 
