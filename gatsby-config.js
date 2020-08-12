@@ -3,6 +3,9 @@ const path = require('path')
 module.exports = {
   siteMetadata: {
     title: 'Poimisto',
+    address: 'Address line 1',
+    zipCode: 'Zip Code',
+    city: 'City',
     mainNavigation: [
       { id: 0, title: 'Contact Us', link: '/contact' },
       { id: 1, title: 'About Us', link: '/about' },
@@ -16,6 +19,14 @@ module.exports = {
       options: {
         name: 'Assets',
         path: path.join(__dirname, 'src', 'assets'),
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /svg/,
+        },
       },
     },
     'gatsby-plugin-styled-components',

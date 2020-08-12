@@ -13,21 +13,26 @@ const Header = () => {
   const { mainNavigation } = data.site.siteMetadata
 
   return (
-    <S.Header>
-      <S.LogoWrapper>
-        <S.Logo>
-          <h1>Poimisto</h1>
-          <FaAngleRight size={32} color="#00cb26" />
-        </S.Logo>
-      </S.LogoWrapper>
-      <S.Nav>
-        {mainNavigation.map(navItem => (
-          <S.NavItem key={navItem.id}>
-            <Link to={navItem.link}>{navItem.title}</Link>
-          </S.NavItem>
-        ))}
-      </S.Nav>
-    </S.Header>
+    <S.HeaderWrapper>
+      <S.Header>
+        <S.LogoWrapper>
+          <Link to="/">
+            <S.Logo>
+              <h1>Poimisto</h1>
+              <FaAngleRight size={32} color="#00cb26" />
+            </S.Logo>
+          </Link>
+        </S.LogoWrapper>
+        <S.Nav>
+          {mainNavigation.map(navItem => (
+            <S.NavItem key={navItem.id}>
+              <Link to={navItem.link}>{navItem.title}</Link>
+            </S.NavItem>
+          ))}
+        </S.Nav>
+        <S.Menu />
+      </S.Header>
+    </S.HeaderWrapper>
   )
 }
 

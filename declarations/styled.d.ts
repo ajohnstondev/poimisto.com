@@ -1,7 +1,7 @@
 // import original module declarations
 import 'styled-components'
 
-import theme from './src/assets/themes/theme'
+import theme from '../src/assets/themes/theme'
 
 type Theme = typeof theme
 

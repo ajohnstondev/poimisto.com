@@ -1,8 +1,10 @@
 import React from 'react'
 import { PageProps } from 'gatsby'
 
+import Layout from '@/components/Layout'
+
 const Contact: React.FC<PageProps> = () => {
-  return <div></div>
+  return <Layout></Layout>
 }
 
 export default Contact

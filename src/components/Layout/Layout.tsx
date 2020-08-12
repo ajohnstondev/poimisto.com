@@ -31,9 +31,11 @@ const Layout: React.FC<Props> = ({ children, title }) => {
         />
       </Helmet>
       <GlobalStyle />
-      <Header />
-      <S.MainContent>{children}</S.MainContent>
-      <Footer />
+      <S.PageWrapper>
+        <Header />
+        <S.MainContent>{children}</S.MainContent>
+        <Footer />
+      </S.PageWrapper>
     </>
   )
 }

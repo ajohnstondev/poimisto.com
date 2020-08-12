@@ -1,17 +1,31 @@
 import styled from 'styled-components'
 
-import { container } from '@/assets/themes/helpers'
+export const AboutUs = styled.section``
 
-export const AboutUs = styled.section`
-  ${container}
-  padding-top: 100px;
-`
+export const AboutItems = styled.div``
 
-export const SectionTitle = styled.h2`
-  font-size: 32px;
-  font-weight: 500;
+export const AboutItem = styled.div`
+  display: flex;
+  align-items: center;
 
-  em {
-    font-family: inherit;
+  h4 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 15px;
   }
+
+  p {
+    justify-content: center;
+  }
+
+  > *:first-child {
+    flex-basis: 100px;
+  }
+
+  > *:last-child {
+    flex: 1;
+    margin-left: 25px;
+  }
+
+  margin-bottom: 60px;
 `
