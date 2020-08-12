@@ -1,6 +1,13 @@
 const path = require('path')
 
 module.exports = {
+  siteMetadata: {
+    title: 'Poimisto',
+    mainNavigation: [
+      { id: 0, title: 'Contact Us', link: '/contact' },
+      { id: 1, title: 'About Us', link: '/about' },
+    ],
+  },
   plugins: [
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
