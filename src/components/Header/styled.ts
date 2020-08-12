@@ -2,17 +2,22 @@ import styled from 'styled-components'
 
 import { mediaQueries } from '@/assets/themes/media'
 
-export const Header = styled.header`
+export const HeaderWrapper = styled.div`
   position: absolute;
   width: 100%;
   height: 80px;
   top: 0;
   left: 0;
+`
+
+export const Header = styled.header`
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1225px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 15px;
-  padding-right: 15px;
 
   ${mediaQueries.isTabletOrDesktop} {
     padding-left: 15%;
@@ -21,6 +26,20 @@ export const Header = styled.header`
 `
 
 export const LogoWrapper = styled.div``
+
+export const Logo = styled.div`
+  font-family: 'Coda', sans-serif;
+  font-weight: 400;
+  background-color: orange;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: -10px;
+  }
+`
 
 export const Nav = styled.nav`
   display: flex;

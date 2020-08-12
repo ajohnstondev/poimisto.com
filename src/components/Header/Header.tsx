@@ -1,6 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Link from 'gatsby-link'
+import { FaAngleRight } from 'react-icons/fa'
 
 import * as S from './styled'
 
@@ -14,7 +15,10 @@ const Header = () => {
   return (
     <S.Header>
       <S.LogoWrapper>
-        <h1>Poimisto</h1>
+        <S.Logo>
+          <h1>Poimisto</h1>
+          <FaAngleRight size={32} color="#00cb26" />
+        </S.Logo>
       </S.LogoWrapper>
       <S.Nav>
         {mainNavigation.map(navItem => (
