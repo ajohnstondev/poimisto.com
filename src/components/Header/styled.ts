@@ -29,14 +29,14 @@ export const Logo = styled.div`
   font-family: 'Coda', sans-serif;
   letter-spacing: 2px;
   font-weight: 400;
-  background-color: ${props => props.theme.colors.primary};
+  background-color: #333;
   padding: 5px 10px;
   border-radius: 5px;
   display: flex;
   align-items: center;
 
   h1 {
-    color: #333;
+    color: #fff;
   }
 
   svg {
