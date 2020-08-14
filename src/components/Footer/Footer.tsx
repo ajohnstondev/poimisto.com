@@ -20,30 +20,32 @@ const Footer = () => {
 
   return (
     <S.Footer>
-      <S.FooterInfo>
-        <Link to="/">
-          <PoimistoLogo variant="dark" />
-        </Link>
-        <ul>
-          <li>{title}</li>
-          <li>Some info about a company</li>
-        </ul>
-      </S.FooterInfo>
-      <S.FooterContact>
-        <h3>Contact:</h3>
-        <ul>
-          <li>{address}</li>
-          <li>{zipCode}</li>
-          <li>{city}</li>
-        </ul>
-      </S.FooterContact>
-      <S.FooterNav>
-        {mainNavigation.map(item => (
-          <S.FooterNavItem key={item.id}>
-            <Link to={item.link}>{item.title}</Link>
-          </S.FooterNavItem>
-        ))}
-      </S.FooterNav>
+      <S.FooterMainContent>
+        <S.FooterInfo>
+          <Link to="/">
+            <PoimistoLogo variant="dark" />
+          </Link>
+          <ul>
+            <li>{title}</li>
+            <li>Some info about a company</li>
+          </ul>
+        </S.FooterInfo>
+        <S.FooterContact>
+          <h3>Contact:</h3>
+          <ul>
+            <li>{address}</li>
+            <li>{zipCode}</li>
+            <li>{city}</li>
+          </ul>
+        </S.FooterContact>
+        <S.FooterNav>
+          {mainNavigation.map(item => (
+            <S.FooterNavItem key={item.id}>
+              <Link to={item.link}>{item.title}</Link>
+            </S.FooterNavItem>
+          ))}
+        </S.FooterNav>
+      </S.FooterMainContent>
       <S.SocialMedia>
         <div className="social-media-links">
           <div>

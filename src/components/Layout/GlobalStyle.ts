@@ -16,6 +16,10 @@ const reset = css`
     border: 0;
     outline: none;
   }
+
+  ul {
+    list-style: none;
+  }
 `
 
 const typography = css`
@@ -31,8 +35,7 @@ const typography = css`
   h4,
   h5,
   h6 {
-    font-family: ${props => props.theme.fonts.heading}
-
+    font-family: ${props => props.theme.fonts.heading};
   }
 `
 

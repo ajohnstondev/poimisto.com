@@ -1,10 +1,28 @@
 import styled from 'styled-components'
 
+import { mediaQueries } from '@/assets/themes/media'
+
 export const Footer = styled.footer`
   background-color: #323b40;
   margin-top: 30px;
   padding-top: 15px;
   color: #fff;
+`
+
+export const FooterMainContent = styled.div`
+  ${mediaQueries.isTabletOrDesktop} {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 50px;
+
+    > * {
+      flex: 1;
+    }
+
+    > *:nth-child(1) {
+      margin-top: -30px;
+    }
+  }
 `
 
 export const FooterInfo = styled.div`
