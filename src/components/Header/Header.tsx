@@ -24,7 +24,6 @@ const Header = () => {
       } else {
         setShadow(false)
       }
-      console.log(window.scrollY)
     }, 300)
 
     window.addEventListener('scroll', handleScroll)
