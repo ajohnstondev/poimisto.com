@@ -7,8 +7,9 @@ module.exports = {
     zipCode: 'Zip Code',
     city: 'City',
     mainNavigation: [
-      { id: 0, title: 'Contact Us', link: '/contact' },
-      { id: 1, title: 'About Us', link: '/about' },
+      { id: 0, title: 'Home', link: '/' },
+      { id: 1, title: 'Contact Us', link: '/contact' },
+      { id: 2, title: 'About Us', link: '/about' },
     ],
   },
   plugins: [
@@ -47,7 +48,7 @@ module.exports = {
       options: {
         fonts: [
           `Anonymous Pro\:400,700,400i,700i`,
-          `Lato\:300,400,700,300i,400i,700i`
+          `Lato\:300,400,700,300i,400i,700i`,
         ],
         display: 'swap',
       },

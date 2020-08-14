@@ -13,12 +13,11 @@ const MobileNav: React.FC<Props> = ({ navigation, style }) => {
   const animateNavItem = useSprings(
     navigation.length,
     navigation.map((_, index) => ({
-      transform: 'translateY(0)',
+      opacity: 1,
       from: {
-        transform: 'translateY(100px)',
+        opacity: 0,
       },
-      delay: 220 + index * 30,
-      config: config.molasses,
+      delay: 220 - index * 25,
     }))
   )
 

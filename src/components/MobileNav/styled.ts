@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const MobileNavWrapper = styled.div`
-  background-color: #000;
+  background-color: #323b40;
   height: 100%;
 `
 

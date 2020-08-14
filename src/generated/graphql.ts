@@ -2008,6 +2008,8 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsAliasXcomponents = 'pluginCreator___pluginOptions___alias____xcomponents',
   PluginCreatorPluginOptionsAliasXassets = 'pluginCreator___pluginOptions___alias____xassets',
   PluginCreatorPluginOptionsExtensions = 'pluginCreator___pluginOptions___extensions',
+  PluginCreatorPluginOptionsFonts = 'pluginCreator___pluginOptions___fonts',
+  PluginCreatorPluginOptionsDisplay = 'pluginCreator___pluginOptions___display',
   PluginCreatorPluginOptionsPathCheck = 'pluginCreator___pluginOptions___pathCheck',
   PluginCreatorNodeApIs = 'pluginCreator___nodeAPIs',
   PluginCreatorBrowserApIs = 'pluginCreator___browserAPIs',
@@ -2291,6 +2293,8 @@ export enum SitePluginFieldsEnum {
   PluginOptionsAliasXcomponents = 'pluginOptions___alias____xcomponents',
   PluginOptionsAliasXassets = 'pluginOptions___alias____xassets',
   PluginOptionsExtensions = 'pluginOptions___extensions',
+  PluginOptionsFonts = 'pluginOptions___fonts',
+  PluginOptionsDisplay = 'pluginOptions___display',
   PluginOptionsPathCheck = 'pluginOptions___pathCheck',
   NodeApIs = 'nodeAPIs',
   BrowserApIs = 'browserAPIs',
@@ -2418,6 +2422,8 @@ export type SitePluginPluginOptions = {
   path: Maybe<Scalars['String']>;
   alias: Maybe<SitePluginPluginOptionsAlias>;
   extensions: Maybe<Array<Maybe<Scalars['String']>>>;
+  fonts: Maybe<Array<Maybe<Scalars['String']>>>;
+  display: Maybe<Scalars['String']>;
   pathCheck: Maybe<Scalars['Boolean']>;
 };
 
@@ -2437,6 +2443,8 @@ export type SitePluginPluginOptionsFilterInput = {
   path: Maybe<StringQueryOperatorInput>;
   alias: Maybe<SitePluginPluginOptionsAliasFilterInput>;
   extensions: Maybe<StringQueryOperatorInput>;
+  fonts: Maybe<StringQueryOperatorInput>;
+  display: Maybe<StringQueryOperatorInput>;
   pathCheck: Maybe<BooleanQueryOperatorInput>;
 };
 
@@ -2637,23 +2645,6 @@ export type PagesQueryQuery = (
   ) }
 );
 
-export type AboutUsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AboutUsQuery = (
-  { __typename?: 'Query' }
-  & { file: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fixed: Maybe<(
-        { __typename?: 'ImageSharpFixed' }
-        & GatsbyImageSharpFixedFragment
-      )> }
-    )> }
-  )> }
-);
-
 export type FooterInfoQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2664,6 +2655,10 @@ export type FooterInfoQuery = (
     & { siteMetadata: Maybe<(
       { __typename?: 'SiteSiteMetadata' }
       & Pick<SiteSiteMetadata, 'title' | 'address' | 'zipCode' | 'city'>
+      & { mainNavigation: Maybe<Array<Maybe<(
+        { __typename?: 'SiteSiteMetadataMainNavigation' }
+        & Pick<SiteSiteMetadataMainNavigation, 'id' | 'title' | 'link'>
+      )>>> }
     )> }
   )> }
 );
