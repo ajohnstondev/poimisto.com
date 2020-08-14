@@ -1,15 +1,16 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import { useSpring, useSprings, animated, config } from 'react-spring'
+import { useSprings, animated } from 'react-spring'
 
 import * as S from './styled'
 
 type Props = {
   navigation: import('generated/graphql').NavigationQuery['site']['siteMetadata']['mainNavigation']
   style: any
+  close: () => void
 }
 
-const MobileNav: React.FC<Props> = ({ navigation, style }) => {
+const MobileNav: React.FC<Props> = ({ navigation, style, close }) => {
   const animateNavItem = useSprings(
     navigation.length,
     navigation.map((_, index) => ({
@@ -36,7 +37,7 @@ const MobileNav: React.FC<Props> = ({ navigation, style }) => {
         <S.MobileNav>
           {navigation.map((item, index) => (
             <animated.div style={animateNavItem[index]} key={index}>
-              <S.MobileNavItem key={item.id}>
+              <S.MobileNavItem key={item.id} onClick={close}>
                 <Link to={item.link}>{item.title}</Link>
               </S.MobileNavItem>
             </animated.div>

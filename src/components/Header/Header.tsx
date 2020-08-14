@@ -75,6 +75,7 @@ const Header = () => {
                   navigation={mainNavigation}
                   key={key}
                   style={props}
+                  close={() => setMobileOpen(false)}
                 />
               )
           )}
