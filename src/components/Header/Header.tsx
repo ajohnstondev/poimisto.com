@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Link from 'gatsby-link'
 import { useTransition, config } from 'react-spring'
+import throttle from 'lodash.throttle'
 
 import PoimistoLogo from './PoimistoLogo'
 import MobileNav from '@/components/MobileNav'
@@ -17,14 +18,14 @@ const Header = () => {
   )
   // TODO: Add throttle/debounce
   useEffect(() => {
-    function handleScroll() {
+    const handleScroll = throttle(() => {
       if (window.scrollY > 0) {
         setShadow(true)
       } else {
         setShadow(false)
       }
       console.log(window.scrollY)
-    }
+    }, 300)
 
     window.addEventListener('scroll', handleScroll)
 
