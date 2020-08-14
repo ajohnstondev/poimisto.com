@@ -9,7 +9,7 @@ export const AboutItem = styled.div`
   align-items: center;
 
   h4 {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 400;
     margin-bottom: 15px;
   }

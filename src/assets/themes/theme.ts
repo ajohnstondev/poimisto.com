@@ -1,11 +1,19 @@
 const theme = {
   colors: {
-    primary: '#ffa800',
-    secondary: '#00cb26',
-    body: '#fafafa',
+    brandPrimary: '#00cb26',
+    brandLight: "#cdffd6",
+    brandDark : "#19792b",
+    dark : "#333",
+    body: '#fff',
     text: '#333',
-    headings: '#000',
   },
+  fonts : {
+    hero : '"Anonymous Pro", serif',
+    heading : '"Anonymous Pro", serif',
+    body: '"Lato", serif',
+
+  }
 }
+
 
 export default theme

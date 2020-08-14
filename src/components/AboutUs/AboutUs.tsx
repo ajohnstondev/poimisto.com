@@ -5,7 +5,6 @@ import { ABOUT_ITEMS } from './constants'
 import * as S from './styled'
 
 const AboutUs = () => {
-  const data = useStaticQuery<import('generated/graphql').AboutUsQuery>(query)
 
   return (
     <S.AboutUs>
@@ -24,16 +23,5 @@ const AboutUs = () => {
   )
 }
 
-const query = graphql`
-  query AboutUs {
-    file(relativePath: { eq: "images/alphabet-blackboard-education.webp" }) {
-      childImageSharp {
-        fixed(width: 200, height: 200) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-  }
-`
 
 export default AboutUs

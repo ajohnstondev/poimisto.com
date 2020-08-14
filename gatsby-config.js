@@ -42,5 +42,15 @@ module.exports = {
       },
     },
     'gatsby-plugin-typescript',
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Anonymous Pro\:400,700,400i,700i`,
+          `Lato\:300,400,700,300i,400i,700i`
+        ],
+        display: 'swap',
+      },
+    },
   ],
 }

@@ -22,6 +22,7 @@ const typography = css`
   body {
     background-color: ${props => props.theme.colors.body};
     color: ${props => props.theme.colors.text};
+    font-family: ${props => props.theme.fonts.body};
   }
 
   h1,
@@ -30,8 +31,8 @@ const typography = css`
   h4,
   h5,
   h6 {
-    /* font-family: 'Alegreya Sans SC', sans-serif; */
-    color: ${props => props.theme.colors.headings};
+    font-family: ${props => props.theme.fonts.heading}
+
   }
 `
 
