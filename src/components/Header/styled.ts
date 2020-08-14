@@ -26,6 +26,9 @@ export const HeaderWrapper = styled.div<HeaderWrapperProps>`
 
 export const Header = styled.header`
   ${container}
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,6 +39,7 @@ export const LogoWrapper = styled.div``
 export const Menu = styled(MdMenu).attrs(() => ({
   size: 36,
 }))`
+  z-index: 10000;
   ${mediaQueries.isTabletOrDesktop} {
     display: none;
   }
