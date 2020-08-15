@@ -50,7 +50,8 @@ const Header = () => {
       opacity: 0,
     },
     enter: {
-      height: typeof window !== 'undefined' ? window.innerHeight : '100vh',
+      height:
+        typeof window !== 'undefined' ? window.innerHeight + 100 : '100vh',
       opacity: 1,
     },
     leave: { height: 0, opacity: 0 },
