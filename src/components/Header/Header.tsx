@@ -5,12 +5,13 @@ import { useTransition, config } from 'react-spring'
 import throttle from 'lodash.throttle'
 import useMedia from 'use-media'
 
+import { TABLET_VIEW } from '@/assets/themes/media'
 import PoimistoLogo from '@/components/PoimistoLogo'
 import MobileNav from '@/components/MobileNav'
 import * as S from './styled'
 
 const Header = () => {
-  const isDesktopOrTablet = useMedia({ minWidth: 1000 })
+  const isDesktopOrTablet = useMedia({ minWidth: TABLET_VIEW })
 
   // If page is scrolled set header shadow to true (on server side always false)
   const [shadow, setShadow] = useState<boolean>(
