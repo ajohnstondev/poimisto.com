@@ -21,6 +21,7 @@ export const HeaderWrapper = styled.div<HeaderWrapperProps>`
   height: 80px;
   top: 0;
   left: 0;
+  z-index: 1000;
 `
 
 export const Header = styled.header`

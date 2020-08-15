@@ -18,7 +18,7 @@ const MobileNav: React.FC<Props> = ({ navigation, style, close }) => {
       from: {
         opacity: 0,
       },
-      delay: 260 - index * 25,
+      delay: 300 - index * 40,
     }))
   )
 

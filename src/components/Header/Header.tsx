@@ -59,7 +59,7 @@ const Header = () => {
   const { mainNavigation } = data.site.siteMetadata
 
   return (
-    <S.HeaderWrapper shadow={shadow} style={{ zIndex: 10000 }}>
+    <S.HeaderWrapper shadow={shadow}>
       {transitions.map(
         ({ item, key, props }: any) =>
           item && (
