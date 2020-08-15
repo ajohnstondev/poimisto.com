@@ -2,7 +2,7 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Link from 'gatsby-link'
 
-import PoimistoLogo from '@/components/Header/PoimistoLogo'
+import PoimistoLogo from '@/components/PoimistoLogo'
 import * as S from './styled'
 
 const Footer = () => {

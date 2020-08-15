@@ -64,6 +64,11 @@ export const FooterNav = styled.nav`
 export const FooterNavItem = styled.div`
   font-size: 22px;
   margin-bottom: 5px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: #0ebac7;
+  }
 `
 
 export const SocialMedia = styled.footer`

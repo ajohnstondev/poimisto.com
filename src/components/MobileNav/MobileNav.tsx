@@ -18,21 +18,12 @@ const MobileNav: React.FC<Props> = ({ navigation, style, close }) => {
       from: {
         opacity: 0,
       },
-      delay: 220 - index * 25,
+      delay: 260 - index * 25,
     }))
   )
 
   return (
-    <animated.div
-      style={{
-        ...style,
-        zIndex: 9999,
-        position: 'absolute',
-        width: '100%',
-        top: 0,
-        left: 0,
-      }}
-    >
+    <S.AnimatedMobileNav style={style}>
       <S.MobileNavWrapper>
         <S.MobileNav>
           {navigation.map((item, index) => (
@@ -44,7 +35,7 @@ const MobileNav: React.FC<Props> = ({ navigation, style, close }) => {
           ))}
         </S.MobileNav>
       </S.MobileNavWrapper>
-    </animated.div>
+    </S.AnimatedMobileNav>
   )
 }
 

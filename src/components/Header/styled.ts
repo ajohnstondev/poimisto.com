@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { MdMenu } from 'react-icons/md'
+import { Squash } from 'hamburger-react'
 
 import { mediaQueries } from '@/assets/themes/media'
 import { container } from '@/assets/themes/helpers'
@@ -21,7 +21,6 @@ export const HeaderWrapper = styled.div<HeaderWrapperProps>`
   height: 80px;
   top: 0;
   left: 0;
-  z-index: 999;
 `
 
 export const Header = styled.header`
@@ -34,15 +33,19 @@ export const Header = styled.header`
   justify-content: space-between;
 `
 
-export const LogoWrapper = styled.div``
+export const LogoWrapper = styled.div`
+  z-index: 999;
+`
 
-export const Menu = styled(MdMenu).attrs(() => ({
-  size: 36,
-}))`
-  z-index: 10000;
-  ${mediaQueries.isTabletOrDesktop} {
-    display: none;
-  }
+type HamburgerProps = {
+  toggled: boolean
+}
+
+export const Hamburger = styled(Squash).attrs(props => ({
+  size: 24,
+  color: props.toggled ? '#fff' : '#000',
+}))<HamburgerProps>`
+  z-index: 999;
 `
 
 export const Nav = styled.nav`

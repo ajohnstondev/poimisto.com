@@ -7831,6 +7831,11 @@ gzip-size@3.0.0:
   dependencies:
     duplexer "^0.1.1"
 
+hamburger-react@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/hamburger-react/-/hamburger-react-2.1.1.tgz#ab3eafab254e6376c9940f911a47ee8bd396b3cc"
+  integrity sha512-vUdSk8VMySk62Fa5rp+3yue+wEmjEv06SiARI+y0IRcOAUolyM2Mr35SDU0po0i65G9/6Oa48X0FNFjQ8dnd8Q==
+
 handle-thing@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.1.tgz#857f79ce359580c340d43081cc648970d0bb234e"
@@ -14940,6 +14945,11 @@ use-callback-ref@^1.2.1, use-callback-ref@^1.2.3:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.4.tgz#d86d1577bfd0b955b6e04aaf5971025f406bea3c"
   integrity sha512-rXpsyvOnqdScyied4Uglsp14qzag1JIemLeTWGKbwpotWht57hbP78aNT+Q4wdFKQfQibbUX4fb6Qb4y11aVOQ==
+
+use-media@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/use-media/-/use-media-1.4.0.tgz#e777bf1f382a7aacabbd1f9ce3da2b62e58b2a98"
+  integrity sha512-XsgyUAf3nhzZmEfhc5MqLHwyaPjs78bgytpVJ/xDl0TF4Bptf3vEpBNBBT/EIKOmsOc8UbuECq3mrP3mt1QANA==
 
 use-sidecar@^1.0.1:
   version "1.0.3"

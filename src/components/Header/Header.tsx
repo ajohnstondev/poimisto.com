@@ -3,20 +3,27 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Link from 'gatsby-link'
 import { useTransition, config } from 'react-spring'
 import throttle from 'lodash.throttle'
+import useMedia from 'use-media'
 
-import PoimistoLogo from './PoimistoLogo'
+import PoimistoLogo from '@/components/PoimistoLogo'
 import MobileNav from '@/components/MobileNav'
 import * as S from './styled'
 
 const Header = () => {
+  const isDesktopOrTablet = useMedia({ minWidth: 1000 })
+
+  // If page is scrolled set header shadow to true (on server side always false)
   const [shadow, setShadow] = useState<boolean>(
-    !!globalThis.window && !!globalThis.window.scrollY
+    typeof window !== 'undefined' && window.scrollY ? true : false
   )
   const [mobileOpen, setMobileOpen] = useState(false)
   const data = useStaticQuery<import('generated/graphql').NavigationQuery>(
     query
   )
-  // TODO: Add throttle/debounce
+
+  /*
+    Add shadow on scroll using lodash.throttle
+  */
   useEffect(() => {
     const handleScroll = throttle(() => {
       if (window.scrollY > 0) {
@@ -33,12 +40,18 @@ const Header = () => {
     }
   }, [setShadow])
 
+  /* 
+    Mobile Navigation animations
+  */
   const transitions = useTransition(mobileOpen, null, {
     from: {
       height: '83px',
       opacity: 0,
     },
-    enter: { height: window.innerHeight, opacity: 1 },
+    enter: {
+      height: typeof window !== 'undefined' ? window.innerHeight : '100vh',
+      opacity: 1,
+    },
     leave: { height: 0, opacity: 0 },
     config: config.slow,
   })
@@ -46,42 +59,40 @@ const Header = () => {
   const { mainNavigation } = data.site.siteMetadata
 
   return (
-    <>
-      <S.HeaderWrapper shadow={shadow}>
-        <S.Header>
-          <Link to="/" style={{ zIndex: 10000 }}>
+    <S.HeaderWrapper shadow={shadow} style={{ zIndex: 10000 }}>
+      {transitions.map(
+        ({ item, key, props }: any) =>
+          item && (
+            <MobileNav
+              navigation={mainNavigation}
+              key={key}
+              style={props}
+              close={() => setMobileOpen(false)}
+            />
+          )
+      )}
+      <S.Header>
+        <S.LogoWrapper>
+          <Link to="/">
             <PoimistoLogo
               width={120}
               height={80}
               variant={mobileOpen ? 'dark' : 'light'}
             />
           </Link>
-
-          <S.Nav>
-            {mainNavigation.map(navItem => (
-              <S.NavItem key={navItem.id}>
-                <Link to={navItem.link}>{navItem.title}</Link>
-              </S.NavItem>
-            ))}
-          </S.Nav>
-          <S.Menu
-            color={mobileOpen ? '#fff' : '#000'}
-            onClick={() => setMobileOpen(!mobileOpen)}
-          />
-          {transitions.map(
-            ({ item, key, props }: any) =>
-              item && (
-                <MobileNav
-                  navigation={mainNavigation}
-                  key={key}
-                  style={props}
-                  close={() => setMobileOpen(false)}
-                />
-              )
-          )}
-        </S.Header>
-      </S.HeaderWrapper>
-    </>
+        </S.LogoWrapper>
+        <S.Nav>
+          {mainNavigation.map(navItem => (
+            <S.NavItem key={navItem.id}>
+              <Link to={navItem.link}>{navItem.title}</Link>
+            </S.NavItem>
+          ))}
+        </S.Nav>
+        {isDesktopOrTablet || (
+          <S.Hamburger toggled={mobileOpen} toggle={setMobileOpen} />
+        )}
+      </S.Header>
+    </S.HeaderWrapper>
   )
 }
 
