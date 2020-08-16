@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { mediaQueries } from '@/assets/themes/media'
+
 export const ChooseMeetingTimeForm = styled.div``
 
 export const ChooseWeek = styled.div`
@@ -28,8 +30,12 @@ export const TimeRow = styled.div`
 `
 
 export const DayOfAWeek = styled.div`
-  width: 70px;
+  width: 60px;
   margin: 2px;
+
+  ${mediaQueries.isTabletOrDesktop} {
+    width: 70px;
+  }
 `
 
 type TimeCellProps = {
@@ -37,11 +43,17 @@ type TimeCellProps = {
 }
 
 export const TimeCell = styled.div<TimeCellProps>`
-  padding: 10px 15px;
-  width: 70px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 60px;
   margin: 2px;
   border-radius: 6px;
   color: ${props => (props.available ? '#fff' : '#000')};
   background-color: ${props => (props.available ? '#60A917' : '#F5F5F5')};
   cursor: pointer;
+  text-align: center;
+
+  ${mediaQueries.isTabletOrDesktop} {
+    width: 70px;
+  }
 `
