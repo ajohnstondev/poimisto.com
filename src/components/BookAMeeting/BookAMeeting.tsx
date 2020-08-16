@@ -1,21 +1,31 @@
-import React from 'react'
-import { BsPerson, BsCalendar } from 'react-icons/bs'
+import React, { useState } from 'react'
+import { GoSmiley } from 'react-icons/go'
 
+import { ChooseMeetingTimeForm, BookAMeetingForm } from '@/components/Forms'
 import * as S from './styled'
 
 const BookAMeeting = () => {
+  const [date, setDate] = useState<InstanceType<typeof Date> | null>(null)
+
+  let content: React.ReactElement
+
+  if (date) {
+    content = <BookAMeetingForm chosenDate={date} setDate={setDate} />
+  } else {
+    content = <ChooseMeetingTimeForm setDate={setDate} />
+  }
+
   return (
     <S.BookAMeeting>
       <S.SectionTitle>Book a Meeting</S.SectionTitle>
-      <S.Content>
-        <div>
-          <BsPerson size={100} />
-          <div>Name LastName</div>
-        </div>
-        <div>
-          <BsCalendar size={100} />
-        </div>
-      </S.Content>
+      <S.MeetingWithWrapper>
+        <h5>Book a meeting with:</h5>
+        <S.MeetingWith>
+          <GoSmiley size={32} />
+          <h4>Santeri Salonen</h4>
+        </S.MeetingWith>
+      </S.MeetingWithWrapper>
+      <S.Content>{content}</S.Content>
     </S.BookAMeeting>
   )
 }
