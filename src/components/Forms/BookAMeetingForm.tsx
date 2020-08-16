@@ -20,8 +20,19 @@ type Inputs = {
 const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
   const { register, handleSubmit } = useForm<Inputs>()
 
-  const onSubmit = handleSubmit(({ email, message }) => {
-    console.log(email, message)
+  const onSubmit = handleSubmit(({ name, email, message }) => {
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'book-a-meeting',
+        name,
+        email,
+        message,
+      }),
+    })
+      .then(() => {})
+      .catch(error => console.error(error))
   })
 
   return (
@@ -30,7 +41,14 @@ const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
         <h3>{format(chosenDate, 'dd.MM.yyyy HH:mm')}</h3>
         <S.SwitchTime onClick={() => setDate(null)}>switch time</S.SwitchTime>
       </div>
-      <S.BookAMeetingForm onSubmit={onSubmit}>
+      <S.BookAMeetingForm
+        name="book-a-meeting"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={onSubmit}
+      >
+        <input type="hidden" name="form-name" value="book-a-meeting" />
         <Input
           ref={register({ required: true })}
           name="name"
@@ -57,6 +75,13 @@ const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
       </S.BookAMeetingForm>
     </S.BookAMeetingFormWrapper>
   )
+}
+
+// TODO: Add to utils
+function encode(data: any) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
 }
 
 export default BookAMeetingForm

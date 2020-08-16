@@ -14,11 +14,28 @@ const ContactForm = () => {
   const { register, handleSubmit } = useForm<Inputs>()
 
   const onSubmit = handleSubmit(({ email, message }) => {
-    console.log(email, message)
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({
+        'form-name': 'contact',
+        email,
+        message,
+      }),
+    })
+      .then(() => {})
+      .catch(error => console.error(error))
   })
 
   return (
-    <S.ContactForm onSubmit={onSubmit}>
+    <S.ContactForm
+      name="contact"
+      method="post"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      onSubmit={onSubmit}
+    >
+      <input type="hidden" name="form-name" value="contact" />
       <Input
         ref={register({ required: true })}
         name="email"
@@ -39,6 +56,13 @@ const ContactForm = () => {
       </S.FormActions>
     </S.ContactForm>
   )
+}
+
+// TODO: Add to utils
+function encode(data: any) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
 }
 
 export default ContactForm
