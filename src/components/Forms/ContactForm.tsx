@@ -1,8 +1,10 @@
 import React from 'react'
+import { navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
 
 import { Input, TextArea, Select } from '@/components/Inputs'
 import Button from '@/components/Button'
+import encode from '@/utils/encode'
 import * as S from './contact-from-styled'
 
 type Inputs = {
@@ -11,7 +13,7 @@ type Inputs = {
 }
 
 const ContactForm = () => {
-  const { register, handleSubmit } = useForm<Inputs>()
+  const { register, handleSubmit, formState } = useForm<Inputs>()
 
   const onSubmit = handleSubmit(({ email, message }) => {
     fetch('/', {
@@ -23,9 +25,13 @@ const ContactForm = () => {
         message,
       }),
     })
-      .then(() => {})
+      .then(() => navigate('/thank-you?form-name=contact'))
       .catch(error => console.error(error))
   })
+
+  if (formState.isSubmitting) {
+    return <h1>Loading...</h1>
+  }
 
   return (
     <S.ContactForm
@@ -56,13 +62,6 @@ const ContactForm = () => {
       </S.FormActions>
     </S.ContactForm>
   )
-}
-
-// TODO: Add to utils
-function encode(data: any) {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
 }
 
 export default ContactForm

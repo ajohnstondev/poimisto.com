@@ -20,13 +20,10 @@ export const ChooseWeek = styled.div`
   }
 `
 
-export const ChooseTime = styled.div`
-  margin-top: 20px;
-`
-
 export const TimeRow = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 `
 
 export const DayOfAWeek = styled.div`

@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import { navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
 import { format } from 'date-fns'
 
 import { Input, TextArea } from '@/components/Inputs'
 import Button from '@/components/Button'
+import encode from '@/utils/encode'
 import * as S from './book-a-meeting-form'
 
 type Props = {
-  chosenDate: InstanceType<typeof Date>
-  setDate: (date: InstanceType<typeof Date> | null) => void
+  chosenDate: Date
+  setDate: (date: Date | null) => void
 }
 
 type Inputs = {
@@ -18,7 +20,12 @@ type Inputs = {
 }
 
 const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
-  const { register, handleSubmit } = useForm<Inputs>()
+  const { register, handleSubmit, formState } = useForm<Inputs>()
+  const nameRef = useRef<HTMLInputElement | null>(null)
+  // Focus no the first field
+  useEffect(() => {
+    nameRef.current?.focus()
+  }, [nameRef.current])
 
   const onSubmit = handleSubmit(({ name, email, message }) => {
     fetch('/', {
@@ -26,14 +33,19 @@ const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': 'book-a-meeting',
+        data: chosenDate,
         name,
         email,
         message,
       }),
     })
-      .then(() => {})
+      .then(() => navigate('/thank-you?form-name=book-a-meeting'))
       .catch(error => console.error(error))
   })
+
+  if (formState.isSubmitting) {
+    return <h1>Loading...</h1>
+  }
 
   return (
     <S.BookAMeetingFormWrapper>
@@ -50,7 +62,10 @@ const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
       >
         <input type="hidden" name="form-name" value="book-a-meeting" />
         <Input
-          ref={register({ required: true })}
+          ref={e => {
+            register(e, { required: true })
+            nameRef.current = e
+          }}
           name="name"
           type="text"
           placeholder="Your name"
@@ -75,13 +90,6 @@ const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
       </S.BookAMeetingForm>
     </S.BookAMeetingFormWrapper>
   )
-}
-
-// TODO: Add to utils
-function encode(data: any) {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
 }
 
 export default BookAMeetingForm

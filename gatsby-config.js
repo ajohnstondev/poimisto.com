@@ -38,6 +38,7 @@ module.exports = {
         alias: {
           '@/components': 'src/components',
           '@/assets': 'src/assets',
+          '@/utils': 'src/utils',
         },
         extensions: ['ts', 'tsx'],
       },

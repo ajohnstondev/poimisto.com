@@ -5,7 +5,7 @@ import { ChooseMeetingTimeForm, BookAMeetingForm } from '@/components/Forms'
 import * as S from './styled'
 
 const BookAMeeting = () => {
-  const [date, setDate] = useState<InstanceType<typeof Date> | null>(null)
+  const [date, setDate] = useState<Date | null>(null)
 
   let content: React.ReactElement
 

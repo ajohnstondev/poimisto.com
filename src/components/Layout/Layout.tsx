@@ -10,9 +10,10 @@ import * as S from './styled'
 
 type Props = {
   title?: string
+  centerContent?: boolean
 }
 
-const Layout: React.FC<Props> = ({ children, title }) => {
+const Layout: React.FC<Props> = ({ children, title, centerContent }) => {
   const data = useStaticQuery<
     import('generated/graphql').LayoutSiteMetadataQuery
   >(query)
@@ -33,7 +34,7 @@ const Layout: React.FC<Props> = ({ children, title }) => {
       <GlobalStyle />
       <S.PageWrapper>
         <Header />
-        <S.MainContent>{children}</S.MainContent>
+        <S.MainContent center={centerContent}>{children}</S.MainContent>
         <Footer />
       </S.PageWrapper>
     </>

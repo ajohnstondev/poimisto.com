@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { mediaQueries } from '@/assets/themes/media'
 
 export const PageWrapper = styled.div`
@@ -10,10 +10,22 @@ export const PageWrapper = styled.div`
   }
 `
 
-export const MainContent = styled.main`
+type MainContentProps = {
+  center?: boolean
+}
+
+export const MainContent = styled.main<MainContentProps>`
   margin-left: auto;
   margin-right: auto;
   max-width: 1225px;
   padding: 0 20px;
   flex: 1;
+  ${props =>
+    props.center
+      ? css`
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        `
+      : ''}
 `
