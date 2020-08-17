@@ -22,7 +22,7 @@ type Inputs = {
 const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
   const { register, handleSubmit, formState } = useForm<Inputs>()
   const nameRef = useRef<HTMLInputElement | null>(null)
-  // Focus no the first field
+  // Focus on the first field
   useEffect(() => {
     nameRef.current?.focus()
   }, [nameRef.current])

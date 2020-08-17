@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { mediaQueries } from '@/assets/themes/media'
 
@@ -45,9 +45,17 @@ export const TimeCell = styled.div<TimeCellProps>`
   width: 60px;
   margin: 2px;
   border-radius: 6px;
-  color: ${props => (props.available ? '#fff' : '#000')};
-  background-color: ${props => (props.available ? '#60A917' : '#F5F5F5')};
-  cursor: pointer;
+  ${props =>
+    props.available
+      ? css`
+          color: #fff;
+          background-color: #60a917;
+          cursor: pointer;
+        `
+      : css`
+          color: #000;
+          background-color: #f5f5f5;
+        `}
   text-align: center;
 
   ${mediaQueries.isTabletOrDesktop} {

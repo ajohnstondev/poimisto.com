@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import {
   format,
   getWeek,
@@ -6,26 +6,32 @@ import {
   isSaturday,
   isSunday,
   addDays,
-  isAfter,
 } from 'date-fns'
+import { addWeeks } from 'date-fns/esm'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import { ChooseTime } from '@/components/Animated'
+import isAvailable from '@/utils/isAvailable'
 import * as S from './choose-meeting-time-form'
-import { addWeeks } from 'date-fns/esm'
-
-const START_HOUR = 8
-const END_HOUR = 17 // excluding
-const DAYS_OF_WEEK = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
-const DATE_FORMAT_STRING = 'dd.MM.yyyy'
-const MAX_WEEKS_FROM_NOW = 4 // including
+import {
+  START_HOUR,
+  END_HOUR,
+  DATE_FORMAT_STRING,
+  DAYS_OF_WEEK,
+  MAX_WEEKS_FROM_NOW,
+} from './constants'
 
 type Props = {
   setDate: (date: Date) => void
+  weeksFromNow: number
+  setWeeksFromNow: (n: number) => void
 }
 
-const ChooseMeetingTimeForm: React.FC<Props> = ({ setDate }) => {
-  const [weeksFromNow, setWeeksFromNow] = useState(0)
+const ChooseMeetingTimeForm: React.FC<Props> = ({
+  setDate,
+  weeksFromNow,
+  setWeeksFromNow,
+}) => {
   const now = new Date()
 
   let firstWorkingMonday: Date
@@ -36,10 +42,6 @@ const ChooseMeetingTimeForm: React.FC<Props> = ({ setDate }) => {
     firstWorkingMonday = addDays(now, 1)
   } else {
     firstWorkingMonday = startOfWeek(now, { weekStartsOn: 1 })
-  }
-
-  const isAvailable = (date: Date) => {
-    return isAfter(date, now)
   }
 
   const items = useMemo(() => {
@@ -56,10 +58,12 @@ const ChooseMeetingTimeForm: React.FC<Props> = ({ setDate }) => {
           )
         )
 
+        const isAv = isAvailable(date)
+
         tempItems.push(
           <S.TimeCell
-            available={isAvailable(date)}
-            onClick={() => setDate(date)}
+            available={isAv}
+            onClick={isAv ? () => setDate(date) : undefined}
             key={key}
           >
             {`${Math.floor((START_HOUR + index) / 10)}${

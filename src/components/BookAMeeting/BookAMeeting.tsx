@@ -6,13 +6,21 @@ import * as S from './styled'
 
 const BookAMeeting = () => {
   const [date, setDate] = useState<Date | null>(null)
+  // For choose meeting time form
+  const [weeksFromNow, setWeeksFromNow] = useState(0)
 
   let content: React.ReactElement
 
   if (date) {
     content = <BookAMeetingForm chosenDate={date} setDate={setDate} />
   } else {
-    content = <ChooseMeetingTimeForm setDate={setDate} />
+    content = (
+      <ChooseMeetingTimeForm
+        weeksFromNow={weeksFromNow}
+        setWeeksFromNow={setWeeksFromNow}
+        setDate={setDate}
+      />
+    )
   }
 
   return (
