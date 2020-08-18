@@ -2,15 +2,14 @@ import React from 'react'
 
 import * as S from './styled'
 
-const HomepageContent = (props : { children: any}) => {
+const Hero = () => {
   return (
-    <S.Hero>
-      <div>
-        {props.children}
-      </div>
-    </S.Hero>
-
+    <S.HeroWrapper>
+      <S.Hero>
+        We <em>help you to</em> build tech and data capabilities.
+      </S.Hero>
+    </S.HeroWrapper>
   )
 }
 
-export default HomepageContent
+export default Hero
