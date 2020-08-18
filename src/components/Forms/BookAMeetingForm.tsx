@@ -80,7 +80,7 @@ const BookAMeetingForm: React.FC<Props> = ({ chosenDate, setDate }) => {
           ref={register}
           name="message"
           placeholder="Your message"
-          rows={3}
+          rows={6}
         />
         <S.FormActions>
           <Button variant="contained" color="#0085fc" type="submit">

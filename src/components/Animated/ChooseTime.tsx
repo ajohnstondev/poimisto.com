@@ -12,16 +12,17 @@ const ChooseTime: React.FC<Props> = ({ items, toggle }) => {
   const [trail, set] = useTrail(items.length, () => ({ opacity: 1 as number }))
   useEffect(() => {
     set({ opacity: 0, config: { duration: 0 } })
-    const id = setTimeout(() => {
+    setTimeout(() => {
       set({
         opacity: 1,
         config: { duration: 250 },
       })
     })
 
-    return () => {
-      clearTimeout(id)
-    }
+    /*
+     * That's intentional!
+     */
+    // return () => {}
   }, [toggle])
 
   return (

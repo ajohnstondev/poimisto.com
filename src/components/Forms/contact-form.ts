@@ -9,13 +9,10 @@ export const ContactForm = styled.form`
 
 export const FormActions = styled.div`
   display: flex;
+  justify-content: flex-end;
 
-  > *:first-child {
-    flex: 1;
-    margin-right: 15px;
-  }
-
-  > *:last-child {
-    flex-basis: 150px;
+  /* TO FIX */
+  button {
+    padding: 10px 50px;
   }
 `

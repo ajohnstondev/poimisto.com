@@ -4,7 +4,6 @@ import { PageProps } from 'gatsby'
 import Layout from '@/components/Layout'
 
 import AboutUs from '@/components/AboutUs'
-import ContactUs from '@/components/ContactUs'
 import BookAMeeting from '@/components/BookAMeeting'
 import Hero from '@/components/Hero'
 
@@ -41,7 +40,6 @@ const Home: React.FC<PageProps> = () => {
       <AboutUs />
 
       <BookAMeeting />
-      <ContactUs />
     </Layout>
   )
 }

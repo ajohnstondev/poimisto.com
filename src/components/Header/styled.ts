@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 import { Squash } from 'hamburger-react'
 
-import { mediaQueries } from '@/assets/themes/media'
-import { container } from '@/assets/themes/helpers'
+import { mediaQueries } from '@/assets/theme/media'
+import { container } from '@/assets/theme/helpers'
 
 type HeaderWrapperProps = {
   shadow: boolean

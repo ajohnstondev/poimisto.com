@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { mediaQueries } from '@/assets/themes/media'
+import { mediaQueries } from '@/assets/theme/media'
 
 export const ChooseTime = styled.div`
   display: flex;

@@ -5,7 +5,7 @@ import { useTransition, config } from 'react-spring'
 import throttle from 'lodash.throttle'
 import useMedia from 'use-media'
 
-import { TABLET_VIEW } from '@/assets/themes/media'
+import { TABLET_VIEW } from '@/assets/theme/media'
 import PoimistoLogo from '@/components/PoimistoLogo'
 import MobileNav from '@/components/MobileNav'
 import * as S from './styled'

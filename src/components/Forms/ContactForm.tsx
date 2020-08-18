@@ -2,12 +2,13 @@ import React from 'react'
 import { navigate } from 'gatsby'
 import { useForm } from 'react-hook-form'
 
-import { Input, TextArea, Select } from '@/components/Inputs'
+import { Input, TextArea } from '@/components/Inputs'
 import Button from '@/components/Button'
 import encode from '@/utils/encode'
-import * as S from './contact-from-styled'
+import * as S from './contact-form'
 
 type Inputs = {
+  name: string
   email: string
   message: string
 }
@@ -44,6 +45,12 @@ const ContactForm = () => {
       <input type="hidden" name="form-name" value="contact" />
       <Input
         ref={register({ required: true })}
+        name="name"
+        type="text"
+        placeholder="Your name"
+      />
+      <Input
+        ref={register({ required: true })}
         name="email"
         type="email"
         placeholder="Business email address"
@@ -52,10 +59,9 @@ const ContactForm = () => {
         ref={register}
         name="message"
         placeholder="Your message"
-        rows={3}
+        rows={6}
       />
       <S.FormActions>
-        <Select />
         <Button variant="contained" color="#0085fc" type="submit">
           Submit
         </Button>

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { mediaQueries } from '@/assets/themes/media'
+import { mediaQueries } from '@/assets/theme/media'
 
 export const ChooseMeetingTimeForm = styled.div``
 

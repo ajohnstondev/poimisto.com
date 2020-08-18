@@ -7,6 +7,7 @@ export type ButtonProps = {
 
 export const Button = styled.button<ButtonProps>`
   cursor: pointer;
+  font-weight: 600;
   ${props =>
     props.variant === 'contained'
       ? css`
@@ -22,4 +23,14 @@ export const Button = styled.button<ButtonProps>`
           color: ${props.color};
         `
       : ''}
+
+  transition: box-shadow .2s;
+
+  &:hover {
+    box-shadow: 0px 10px 20px rgba(120, 120, 120, 0.2);
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
 `

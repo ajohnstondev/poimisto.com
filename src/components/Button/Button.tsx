@@ -7,8 +7,8 @@ type Props = {
 } & ButtonHTMLAttributes<HTMLButtonElement> &
   S.ButtonProps
 
-const Button: React.FC<Props> = ({ ...buttonProps }) => {
-  return <S.Button {...buttonProps}></S.Button>
+const Button: React.FC<Props> = ({ children, ...buttonProps }) => {
+  return <S.Button {...buttonProps}>{children}</S.Button>
 }
 
 export default Button
