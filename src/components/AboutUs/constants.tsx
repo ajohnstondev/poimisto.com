@@ -1,11 +1,13 @@
 import React from 'react'
 
+
+
 // @ts-ignore
-import Teacher from '@/assets/svg/teacher.svg'
+import Process from '@/assets/svg/process-icon.svg'
 // @ts-ignore
-import Technology from '@/assets/svg/technology.svg'
+import Knowhow from '@/assets/svg/knowhow-icon.svg'
 // @ts-ignore
-import Knowledge from '@/assets/svg/knowledge.svg'
+import Technology from '@/assets/svg/technology-icon.svg'
 
 type AboutItem = {
   id: number
@@ -17,7 +19,7 @@ type AboutItem = {
 export const ABOUT_ITEMS: AboutItem[] = [
   {
     id: 0,
-    icon: <Teacher />,
+    icon: <Process />,
     title: 'Process',
     text: `
       <p>Without a well-defined process, things evolve into a unmanageable mess. But we all know that a rigid process can do harm than good.</p>
@@ -27,6 +29,16 @@ export const ABOUT_ITEMS: AboutItem[] = [
   },
   {
     id: 1,
+    icon: <Knowhow />,
+    title: 'Know-how',
+    text: `
+      <p>It is not the shiny features that makes success in the long run. What counts is the know-how that accrues while building those shiny features.</p> 
+      <br />
+      <p>Let us help in our core compentence areas. Either through our development process or though customized coaching or training.</p>
+    `,
+  },
+  {
+    id: 2,
     icon: <Technology />,
     title: 'Tools & technologies',
     text: `
@@ -35,14 +47,5 @@ export const ABOUT_ITEMS: AboutItem[] = [
       <p>Let us help with choosing the right tool and making sure it fits to your organization architecture.</p>
     `,
   },
-  {
-    id: 2,
-    icon: <Knowledge />,
-    title: 'Know-how',
-    text: `
-      <p>It is not the shiny features that makes success in the long run. What counts is the know-how that accrues while building those shiny features.</p> 
-      <br />
-      <p>Let us help in our core compentence areas. Either through our development process or though customized coaching or training.</p>
-    `,
-  },
+
 ]

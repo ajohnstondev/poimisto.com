@@ -1,15 +1,19 @@
 import styled from 'styled-components'
 
-export const AboutUs = styled.section``
+export const AboutUs = styled.section`
 
-export const AboutItems = styled.div``
+`
+
+export const AboutItems = styled.div`
+  margin-bottom:100px;
+`
 
 export const AboutItem = styled.div`
   display: flex;
   align-items: center;
 
-  h4 {
-    font-size: 24px;
+  h2 {
+    font-size: 28px;
     font-weight: 400;
     margin-bottom: 15px;
   }
@@ -27,5 +31,5 @@ export const AboutItem = styled.div`
     margin-left: 25px;
   }
 
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 `

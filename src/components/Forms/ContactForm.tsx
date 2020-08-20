@@ -1,72 +1,128 @@
-import React from 'react'
-import { navigate } from 'gatsby'
+import React, {useState} from 'react'
 import { useForm } from 'react-hook-form'
 
 import { Input, TextArea } from '@/components/Inputs'
 import Button from '@/components/Button'
-import encode from '@/utils/encode'
 import * as S from './contact-form'
 
-type Inputs = {
-  name: string
-  email: string
-  message: string
+import encode from '@/utils/encode';
+
+
+
+type Props = {
+  path?: string,
+  name: string,
+  inputs: Array<any>, 
+  submit?: boolean,
+  submitText? : string,
+  submitSuccessText?: string,
+  submitSuccess: () => void
 }
 
-const ContactForm = () => {
-  const { register, handleSubmit, formState } = useForm<Inputs>()
+const ContactForm: React.FC<Props> = ({
+  path =  "/",
+  name = "contact-form",
+  inputs,
+  submit = true,
+  submitText = "Submit",
+  submitSuccessText = "Sent",
+  submitSuccess
+}) => {
 
-  const onSubmit = handleSubmit(({ email, message }) => {
-    fetch('/', {
+  const [ formIsSent, setFormIsSent] = useState(false);
+  const { handleSubmit, register, errors } = useForm();
+
+  const submitForm = (values: any) => {
+    fetch(values.path, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': 'contact',
-        email,
-        message,
-      }),
+      body: encode(values)
     })
-      .then(() => navigate('/thank-you?form-name=contact'))
-      .catch(error => console.error(error))
-  })
+    .then(() => {
+      setFormIsSent(true);
+      if (typeof submitSuccess === 'function') submitSuccess();
+    })
+    .catch(error => console.error(error))   
 
-  if (formState.isSubmitting) {
-    return <h1>Loading...</h1>
   }
 
+
   return (
-    <S.ContactForm
-      name="contact"
-      method="post"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      onSubmit={onSubmit}
-    >
-      <input type="hidden" name="form-name" value="contact" />
-      <Input
-        ref={register({ required: true })}
-        name="name"
-        type="text"
-        placeholder="Your name"
-      />
-      <Input
-        ref={register({ required: true })}
-        name="email"
-        type="email"
-        placeholder="Business email address"
-      />
-      <TextArea
-        ref={register}
-        name="message"
-        placeholder="Your message"
-        rows={6}
-      />
-      <S.FormActions>
-        <Button variant="contained" color="#0085fc" type="submit">
-          Submit
-        </Button>
-      </S.FormActions>
-    </S.ContactForm>
+    <S.FormWrapper>
+      <form
+        name={name}
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="test"
+        onSubmit={handleSubmit(submitForm)}
+      >
+        <input style={{ display: "none" }} ref={register()} name="test" type="text" />
+        <input type="hidden" name="form-name" ref={register()} value={name} />
+        <input type="hidden" name="path" ref={register()} value={path} />
+
+  
+        {inputs && inputs.map((input) => {
+          switch(input.type.toLowerCase()) {
+            case 'hidden':
+              return (
+                <div key={input.name}>
+                  <input 
+                    type="hidden" 
+                    name={input.name} 
+                    value={input.value} 
+                    ref={register()}
+                  />
+                </div>
+              )
+            case 'text':
+            case 'email':
+              return (
+                <div className="field" key={input.name}>
+                  <Input
+                    name={input.name}
+                    type={input.type}
+                    placeholder={input.placeholder}
+                    pattern={input.pattern}
+                    ref={register({
+                      required: input.required,
+                      pattern : input.pattern
+                    })}
+                  />
+                  <span className="error">
+                    {errors[input.name] && errors[input.name].message}
+                  </span>
+                </div>
+              );
+            case 'textarea':
+              return (
+                <div className="field" key={input.name}>
+                  <TextArea
+                    name={input.type}
+                    placeholder={input.placeholder}
+                    rows={input.rows || 5}
+                    ref={register({
+                      required: input.required,
+                      pattern : input.pattern
+                    })}
+                  />
+                  <span className="error">{errors[input.name] && errors[input.name].message}</span>
+                </div>
+
+              )
+          }
+          
+        })}
+
+        {submit && 
+          <Button variant="contained" color={(formIsSent) ? "#333" : "#0085fc"} type="submit" disabled={(formIsSent) ? true : false}>
+            {(formIsSent) ? submitSuccessText : submitText}
+          </Button>
+        }
+
+      </form>
+
+    </S.FormWrapper>
+   
   )
 }
 

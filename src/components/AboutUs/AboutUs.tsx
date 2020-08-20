@@ -1,5 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
+
 
 import { ABOUT_ITEMS } from './constants'
 import * as S from './styled'
@@ -13,7 +13,7 @@ const AboutUs = () => {
           <S.AboutItem key={item.id}>
             <div>{item.icon}</div>
             <div>
-              <h4>{item.title}</h4>
+              <h2>{item.title}</h2>
               <div dangerouslySetInnerHTML={{ __html: item.text }}></div>
             </div>
           </S.AboutItem>

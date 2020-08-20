@@ -2,12 +2,7 @@ import styled from 'styled-components'
 
 import { mediaQueries } from '@/assets/theme/media'
 
-export const Footer = styled.footer`
-  background-color: #323b40;
-  margin-top: 30px;
-  padding-top: 15px;
-  color: #fff;
-`
+export const Footer = styled.footer``;
 
 export const FooterMainContent = styled.div`
   ${mediaQueries.isTabletOrDesktop} {
@@ -26,7 +21,6 @@ export const FooterMainContent = styled.div`
 `
 
 export const FooterInfo = styled.div`
-  text-align: center;
 
   ul {
     margin-top: -25px;
@@ -57,7 +51,7 @@ export const FooterContact = styled.div`
 `
 
 export const FooterNav = styled.nav`
-  text-align: center;
+  text-align: right;
   margin-bottom: 30px;
 `
 
@@ -72,8 +66,10 @@ export const FooterNavItem = styled.div`
 `
 
 export const SocialMedia = styled.footer`
+  
   background: #323b40;
   display: flex;
+  display:none;
   justify-content: center;
   padding-bottom: 10px;
   margin-left: -33px;

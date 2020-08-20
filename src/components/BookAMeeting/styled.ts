@@ -1,52 +1,67 @@
 import styled from 'styled-components'
+import { mediaQueries } from '@/assets/theme/media'
+
+export const BookAMeetingTitle = styled.h3`
+  font-size:28px;
+  text-align:center;
+  ${mediaQueries.isTabletOrDesktop} {
+    text-align:left;
+  }
+`;
 
 export const BookAMeeting = styled.section`
-  margin-bottom: 40px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 50px 0;
+  display:flex;
+  flex-direction:column;
+  border-top:1px dashed #333;
+  padding:20px;
+  border:1px dashed #777;
+  
+  ${mediaQueries.isTabletOrDesktop} {
+    flex-direction:row;
+    padding:30px;
+  }
 `
-
-export const SectionTitle = styled.h3`
-  font-size: 24px;
-  margin-bottom: 60px;
-  text-align: center;
-`
-
 export const MeetingWithWrapper = styled.div`
-  max-width: 250px;
-  margin-left: auto;
-  margin-right: auto;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  margin-bottom:20px;
 
-  > h5:first-child {
-    font-size: 16px;
-    margin-bottom: 10px;
+
+  ${mediaQueries.isTabletOrDesktop} {
+    margin-right:40px;
+    margin-bottom:0px;
+    width:50%;
+
   }
 `
 
-export const MeetingWith = styled.div`
+export const SelectWrapper = styled.div`
+  min-width:280px;
+  margin-top:20px;
+  width:100%;
+`
+
+
+export const FormWrapper = styled.div`
+
+  ${mediaQueries.isTabletOrDesktop} {
+    width:50%;
+  }
+`
+
+export const FormHead = styled.div`
+  height: 50px;
+  margin-bottom:20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  background-color: #f5f5f5;
+`;
 
-  padding-top: 15px;
-  padding-bottom: 15px;
-
-  svg {
-    margin-right: 15px;
-  }
-
-  h4 {
-    font-size: 18px;
-  }
-`
-
-export const Content = styled.div`
-  display: flex;
-
-  > * {
-    flex: 1;
-    text-align: center;
-  }
+export const SwitchTime = styled.span`
+  color: blue;
+  text-decoration:underline;
+  cursor:pointer;
+  margin-left:10px;
 `

@@ -15,7 +15,9 @@ const Footer = () => {
     address,
     zipCode,
     city,
+    vatNumber,
     mainNavigation,
+    
   } = data.site.siteMetadata
 
   return (
@@ -23,20 +25,20 @@ const Footer = () => {
       <S.FooterMainContent>
         <S.FooterInfo>
           <Link to="/">
-            <PoimistoLogo variant="dark" />
+            <PoimistoLogo variant="dark" width={120} height={80} />
           </Link>
           <ul>
-            <li>{title}</li>
-            <li>Some info about a company</li>
-          </ul>
-        </S.FooterInfo>
-        <S.FooterContact>
-          <h3>Contact:</h3>
           <ul>
             <li>{address}</li>
             <li>{zipCode}</li>
             <li>{city}</li>
+            <li>{vatNumber}</li>
           </ul>
+        
+          </ul>
+        </S.FooterInfo>
+        <S.FooterContact>
+
         </S.FooterContact>
         <S.FooterNav>
           {mainNavigation.map(item => (
@@ -140,7 +142,7 @@ const Footer = () => {
           </div>
         </div>
       </S.SocialMedia>
-      <S.FooterLegal>Copyright &copy; - blah-blah-blah</S.FooterLegal>
+      <S.FooterLegal>Copyright &copy; 2020 - Poimisto Oy</S.FooterLegal>
     </S.Footer>
   )
 }
@@ -153,6 +155,7 @@ const query = graphql`
         address
         zipCode
         city
+        vatNumber
         mainNavigation {
           id
           title

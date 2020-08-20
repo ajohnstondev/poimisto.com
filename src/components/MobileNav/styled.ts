@@ -15,9 +15,9 @@ export const MobileNavWrapper = styled.div`
 
 export const MobileNav = styled.nav`
   position: absolute;
-  top: calc(50% - 60px);
+  top: calc(50% - 20px);
   transform: translateY(-50%);
-  left: 30px;
+  left: 20px;
 `
 
 export const MobileNavItem = styled.div`

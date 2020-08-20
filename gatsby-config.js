@@ -3,13 +3,16 @@ const path = require('path')
 module.exports = {
   siteMetadata: {
     title: 'Poimisto',
-    address: 'Address line 1',
-    zipCode: 'Zip Code',
-    city: 'City',
+    address: 'Pirkkalaistie 1',
+    zipCode: '37100',
+    city: 'Nokia',
+    vatNumber : 'FI28649557',
     mainNavigation: [
       { id: 0, title: 'Home', link: '/' },
       { id: 1, title: 'Contact Us', link: '/contact' },
+      /*
       { id: 2, title: 'About Us', link: '/about' },
+      */
     ],
   },
   plugins: [

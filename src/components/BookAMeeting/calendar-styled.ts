@@ -2,36 +2,33 @@ import styled, { css } from 'styled-components'
 
 import { mediaQueries } from '@/assets/theme/media'
 
-export const ChooseMeetingTimeForm = styled.div``
-
-export const ChooseWeek = styled.div`
+export const FormHead = styled.div`
+  height: 50px;
+  margin-bottom:20px;
   display: flex;
   justify-content: space-between;
+  
   align-items: center;
-
-  margin-top: 40px;
-
   svg {
     cursor: pointer;
   }
+  text-align:center;
+`;
 
-  > div {
-    text-align: center;
-  }
-`
 
 export const TimeRow = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 0.2fr 0.2fr 0.2fr 0.2fr 0.2fr;
+  text-align:center;
+
 `
 
 export const DayOfAWeek = styled.div`
-  width: 60px;
+ 
   margin: 2px;
 
   ${mediaQueries.isTabletOrDesktop} {
-    width: 70px;
+ 
   }
 `
 
@@ -40,25 +37,25 @@ type TimeCellProps = {
 }
 
 export const TimeCell = styled.div<TimeCellProps>`
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 60px;
-  margin: 2px;
-  border-radius: 6px;
+  padding: 6px;
   ${props =>
     props.available
       ? css`
-          color: #fff;
-          background-color: #60a917;
+          color: ${props => props.theme.colors.brandDark};
+          background-color: ${props => props.theme.colors.brandLight};
           cursor: pointer;
+          &:hover {
+            background-color:${props => props.theme.colors.brandPrimary};
+            color: #fff;
+          }
         `
       : css`
-          color: #000;
-          background-color: #f5f5f5;
+          color: #999;
+          background-color: #f3f3f3;
         `}
   text-align: center;
 
   ${mediaQueries.isTabletOrDesktop} {
-    width: 70px;
+
   }
 `

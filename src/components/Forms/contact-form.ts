@@ -1,18 +1,26 @@
 import styled from 'styled-components'
 
-export const ContactForm = styled.form`
-  > * {
-    margin-bottom: 10px;
-    width: 100%;
+
+export const FormWrapper = styled.div`
+  form {
+    display: flex;
+    flex-direction: column;
+    > .field {
+      margin-bottom: 20px;
+    }
+    input, textarea, button {
+      width: 100%;
+      display:block;
+    }
+    .error {
+      margin-top:-20px;
+      margin-bottom:20px;
+      height:0px;
+      color:red;
+    }
+    button {
+      padding: 10px 50px;
+    }
   }
 `
 
-export const FormActions = styled.div`
-  display: flex;
-  justify-content: flex-end;
-
-  /* TO FIX */
-  button {
-    padding: 10px 50px;
-  }
-`

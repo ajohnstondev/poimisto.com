@@ -9,4 +9,9 @@ export default {
   [getDate('08/21/2020 8:00')]: false,
   [getDate('08/20/2020 12:00')]: false,
   [getDate('08.20.2020 08:00')]: false,
+  [getDate('08.21.2020 15:00')]: false,
+  [getDate('08.21.2020 14:00')]: false,
+  [getDate('08.21.2020 14:00')]: false,
+  [getDate('08.21.2020 14:00')]: false,
+  
 }

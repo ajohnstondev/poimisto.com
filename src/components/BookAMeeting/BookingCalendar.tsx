@@ -11,8 +11,10 @@ import { addWeeks } from 'date-fns/esm'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
 import { ChooseTime } from '@/components/Animated'
-import isAvailable from '@/utils/isAvailable'
-import * as S from './choose-meeting-time-form'
+
+import isAvailable from '@/utils/isAvailable';
+
+import * as S from './calendar-styled'
 import {
   START_HOUR,
   END_HOUR,
@@ -27,7 +29,7 @@ type Props = {
   setWeeksFromNow: (n: number) => void
 }
 
-const ChooseMeetingTimeForm: React.FC<Props> = ({
+const BookingCalendar: React.FC<Props> = ({
   setDate,
   weeksFromNow,
   setWeeksFromNow,
@@ -78,53 +80,57 @@ const ChooseMeetingTimeForm: React.FC<Props> = ({
   }, [weeksFromNow])
 
   return (
-    <S.ChooseMeetingTimeForm>
-      <S.ChooseWeek>
-        <FaChevronLeft
-          size={24}
-          color={weeksFromNow > 0 ? '#000' : '#aaa'}
-          onClick={() => {
-            if (weeksFromNow > 0) {
-              setWeeksFromNow(weeksFromNow - 1)
-            }
-          }}
-        />
-        <div>
+    <div>
+      <S.FormHead>
+       
+          <FaChevronLeft
+            size={24}
+            color={weeksFromNow > 0 ? '#000' : '#aaa'}
+            onClick={() => {
+              if (weeksFromNow > 0) {
+                setWeeksFromNow(weeksFromNow - 1)
+              }
+            }}
+          />
           <div>
-            Week{' '}
-            {getWeek(addWeeks(firstWorkingMonday, weeksFromNow), {
-              weekStartsOn: 1,
-            })}
+            <div>
+              Week{' '}
+              {getWeek(addWeeks(firstWorkingMonday, weeksFromNow), {
+                weekStartsOn: 1,
+              })}
+            </div>
+            <div>
+              {`${format(
+                addWeeks(firstWorkingMonday, weeksFromNow),
+                DATE_FORMAT_STRING
+              )} -
+              ${format(
+                addDays(addWeeks(firstWorkingMonday, weeksFromNow), 4),
+                DATE_FORMAT_STRING
+              )}`}
+            </div>
           </div>
-          <div>
-            {`${format(
-              addWeeks(firstWorkingMonday, weeksFromNow),
-              DATE_FORMAT_STRING
-            )} -
-            ${format(
-              addDays(addWeeks(firstWorkingMonday, weeksFromNow), 4),
-              DATE_FORMAT_STRING
-            )}`}
-          </div>
-        </div>
-        <FaChevronRight
-          size={24}
-          color={weeksFromNow <= MAX_WEEKS_FROM_NOW ? '#000' : '#aaa'}
-          onClick={() => {
-            if (weeksFromNow <= MAX_WEEKS_FROM_NOW) {
-              setWeeksFromNow(weeksFromNow + 1)
-            }
-          }}
-        />
-      </S.ChooseWeek>
+          <FaChevronRight
+            size={24}
+            color={weeksFromNow <= MAX_WEEKS_FROM_NOW ? '#000' : '#aaa'}
+            onClick={() => {
+              if (weeksFromNow <= MAX_WEEKS_FROM_NOW) {
+                setWeeksFromNow(weeksFromNow + 1)
+              }
+            }}
+          />
+
+
+      </S.FormHead>
+    
       <S.TimeRow>
         {DAYS_OF_WEEK.map((day, index) => (
           <S.DayOfAWeek key={index}>{day}</S.DayOfAWeek>
         ))}
       </S.TimeRow>
       <ChooseTime items={items} toggle={weeksFromNow} />
-    </S.ChooseMeetingTimeForm>
+    </div>
   )
 }
 
-export default ChooseMeetingTimeForm
+export default BookingCalendar
